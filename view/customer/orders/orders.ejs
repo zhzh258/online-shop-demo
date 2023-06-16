@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<%-include("../../includes/head", {page_title: "Orders"}) %>
+<script src="/scripts/orders-management.js" defer></script>
+<body>
+    <%-include("../../includes/header") %>
+    <main class="container">
+        <h1>Orders</h1>
+        <% if(!orders || orders.length == 0){ %>
+            <p>No order yet</p>
+        <% } else{%>
+            <% for(order of orders){ %>
+                <%-include("./orders-item", {order: order}) %>
+                <br>
+            <% } %>
+        <% } %>
+</main>
+    <%-include("../../includes/footer") %>
+</body>
+</html>

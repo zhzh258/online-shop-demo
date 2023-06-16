@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--    products === [product-01, product-02, ...]      -->
+<!--    the 'product._id' here is a string instead of an ObjectId() -->
+<html lang="en" data-theme="dark">
+<%-include("../../includes/head", {page_title: "admin tools"}) %>
+<script src="/scripts/products-management.js" defer></script>
+<body>
+    <%-include("../../includes/header") %>
+    <main class="container">
+        <h1>Product Administration</h1>
+        <h3>Add a new product</h2>
+        <p><a href="/admin/products/new" role="button">+</a></p>
+        <h3>Current products:</h3>
+        <% if(!products || products.length == 0){ %>
+            <p>No product on sales</p>
+        <% } else{%>
+            <% for(product of products){ %>
+                <%-include("./products-item"), {product: product} %>
+                <br>
+            <% } %>
+        <% } %>
+    </main>
+    <%-include("../../includes/footer") %>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<%-include("../../includes/head", {page_title: "Products"}) %>
+<script src="/scripts/add-to-cart.js" defer></script>
+<body>
+    <%-include("../../includes/header") %>
+    <main class="container">
+        <h1>Current Available Products</h1>
+        <% if(!products || products.length == 0){ %>
+            <p>No product on sales</p>
+        <% } else{%>
+            <div class="row">
+                <% for(let i = 0; i < products.length; i++){ %>
+                    <% product = products[i]; %>
+                    <div class="col"><%-include("products-item"), {product: product} %></div>
+                    <% if(i % 2 !== 0){ %>
+                        <div class="w-100"></div>
+                    <% } %>
+                    <br>
+                <% } %>
+                
+            </div>
+        <% } %>
+    </main>
+    <%-include("../../includes/footer") %>
+</body>
+</html>

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/511e1aec-289c-47af-bf89-a8fa20f3759c/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/azure-testing-online-shop",
+    "appService.deploySubpath": "."
+}

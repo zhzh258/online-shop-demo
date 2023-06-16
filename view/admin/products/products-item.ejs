@@ -1,0 +1,18 @@
+<details id="item-<%=product._id %>" class="products-item-control">
+    <summary role="button" class="secondary"><%=product.name %></summary>
+    <br><br>
+    <div class="grid">
+        <img src="<%=product.imageFileSrc %>" alt="image of <%=product.name %>" width="500">
+        <ul>
+            <li><strong>Product ID </strong><br><%=product._id %></li>
+            <li><strong>Price </strong><br><%=product.price %></li>
+            <li><strong>Description</strong><br><%=product.description %></li>
+        </ul>
+    </div>
+    <br>
+    
+    <div class="grid">
+        <button onclick="window.location.href='/admin/products/<%=product._id %>'" class="outline">Update</button>
+        <button role="button" class="products-item-delete-btn contrast outline" data-id="<%=product._id %>" data-csrf="<%=locals.csrfToken %>">Delete</button>
+    </div>
+</details>

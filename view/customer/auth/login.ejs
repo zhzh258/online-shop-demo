@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<%-include("../../includes/head", {page_title: "Login"}) %>
+<body>
+    <%-include("../../includes/header") %>
+    <main class="container">
+        <article class="card">
+            <h1>Login with Your Account</h1>
+            <% if(cache.has_error){ %>
+            <h4 style="color: brown"><%=cache.message %></h4>
+            <% } %>
+            <form action="/login" method="POST" id="login-form">
+                <input type="hidden" value="<%= locals.csrfToken %>" name="_csrf">
+                <div class="form-control">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" id="email" placeholder="Email Address"  value="<%=cache.data.email %>" aria-invalid="<%=cache.hint.email %>" required>
+                </div>
+                <div class="form-control">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Password" aria-invalid="<%=cache.hint.password %>" minlength="6"  required>                
+                </div>
+                <br>
+                <button class="button" id="login-btn">Login</button>
+            </form>
+            <p id="signup-instead" style="text-align: center;"><a href="/signup">Signup</a> now</p>
+        </article>
+    </main>
+    <%-include("../../includes/footer") %>
+</body>
+</html>

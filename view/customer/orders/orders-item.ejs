@@ -1,0 +1,61 @@
+<article class="order-item-control">
+    <section>
+        <p class="order-id">
+            <p>Order id: <%=order._id %></p>
+            <p>Total price: $ <i><%=order.cart.sum %></i></p>
+        </p>
+    </section>
+    
+    <details>
+        <summary>Details</summary>
+        <% for(item of order.cart.items){ %>
+            <div class="container">
+                <p class="product-name">
+                    <ins><%=item.product.name %></ins>
+                </p>
+                <p class="calculator">
+                    <i>$</i>
+                    <i class="cart-item-price"><%=item.product.price%></i>
+                    <i> x </i>
+                    <i class="cart-item-quantity"><%=item.quantity %></i>
+                    <i> = $</i>
+                    <i class="cart-item-sum"><%=item.sum %></i>
+                </p>
+            </div>
+        <% } %>
+    </details>
+
+    <% if(locals.isAdmin){ %>
+        <details>
+            <summary>user information</summary>
+                <ul class="container">
+                    <li>    ID: <%=order.user.id %></li>
+                    <li>    email: <%=order.user.email %></li>
+                    <li>    name: <%=order.user.first_name + order.user.last_name %></li>
+                    <li>    phone number: <%=order.user.phone_number %></li>
+                    <li>    shipping address: <%=order.user.shipping_address %></li>
+                </ul>
+        </details>
+        <br>
+    <% } %>
+   
+    <% if(!locals.isAdmin){ %>
+    <ins class="order-item-status">Current status: <%=order.status %></ins>
+
+    <% } else if(locals.isAdmin){ %>
+        <form method="POST" class="order-item-form-control">
+            <ins class="order-item-status">Current status: <%=order.status %></ins>
+            <input type="hidden" value="<%= locals.csrfToken %>" name="_csrf">
+            <input type="hidden" value="<%= order.id %>" name="id">
+            <div class="grid">
+                <select name="status" required>
+                    <option value="completed" selected>Completed</option>
+                    <option value="pending" selected>Pending</option>
+                    <option value="cancelled" selected>Cancelled</option>
+                </select>
+                <button class="outline">Update</button>
+            </div>
+        </form>
+    
+    <% } %>
+</article>

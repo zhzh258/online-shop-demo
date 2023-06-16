@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<%-include("../includes/head", {page_title: "home" }) %>
+<body>
+    <%-include("../includes/header") %>
+    <main class="container">
+        
+        <h1>Home page</h1>
+        <article>
+            <% if(locals.isAuth){ %>
+                <h2>Welcome, <%=locals.first_name %></h2>
+            <% } else{ %>
+                <h2>Welcome, new visitor</h2>
+            <% } %>
+            <% if(!locals.isAuth){ %>
+                <p><a href="/login">Login</a> now</p>
+            <% } %>
+        </article>
+        
+        <p>(testing only)</p>
+        <p>Admin account: 123456@outlook.com</p>
+        <p>Admin password: 123456</p>
+        <p>Stripe card number (Test mode, success): 4242 4242 4242 4242</p>
+    </main>
+    <%-include("../includes/footer") %>
+</body>
+</html>

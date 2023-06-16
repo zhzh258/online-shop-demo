@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<%-include("../../includes/head", {page_title: "admin tools"}) %>
+<body>
+    <%-include("../../includes/header") %>
+    <main class="container">
+        <article class="card">
+            <h1>Add a new product</h1>
+            <form action="/admin/products?_csrf=<%=locals.csrfToken %>" method="POST" id="products-new-form" enctype="multipart/form-data">
+                <input type="hidden" value="<%= locals.csrfToken %>" name="_csrf">
+                <div class="form-control">
+                    <label for="name">Product name</label>
+                    <input type="text" name="name" id="name" placeholder="Product name" required>
+                </div>
+                <div class="form-control">
+                    <label for="price">Product image</label>
+                    <input type="file" name="image" id="image" placeholder="Product image" required>
+                </div>
+                <div class="form-control grid">
+                    <label for="price">
+                        Product price
+                        <input type="number" name="price" id="price" min="0.00" step="1" placeholder="Product price" required>
+                    </label>
+                    <label>
+                        <input type="hidden">
+                    </label>
+                
+                </div>
+                <div class="form-control">
+                    <label for="description">Product description</label>
+                    <textarea rows="10" name="description" id="description" placeholder="Product description" required></textarea>
+                </div>
+                <br>
+                <button class="button" id="submit-btn">add</button>
+            </form>
+        </article>
+    </main>
+    <%-include("../../includes/footer") %>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<article class="products-item-control" data-id="<%=product._id %>">
+    
+    <h3><%=product.name %></h3>
+    <div class="grid">
+        <img src="<%=product.imageFileSrc %>" alt="image of <%=product.name %>" width="500">
+        <ul>
+            <li><strong>Product ID </strong><br><%=product._id %></li>
+            <li><strong>Price </strong><br><%=product.price %></li>
+        </ul>
+    </div>
+    <details>
+        <summary>Description</summary>
+        <br>
+        <%=product.description %>
+    </details>
+    <br>
+    
+    <div class="grid">
+        <button class="outline add-to-cart" data-id="<%=product._id %>" data-csrf="<%=locals.csrfToken %>">Add to my cart</button>
+        <!-- <button onclick="window.location.href='/admin/products/<%=product._id %>'" class="outline">Update</button>
+        <button role="button" class="products-item-delete-btn contrast outline" data-id="<%=product._id %>" data-csrf="<%=locals.csrfToken %>">Delete</button> -->
+    </div>
+
+</article>

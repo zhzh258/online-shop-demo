@@ -1,0 +1,21 @@
+<article class="cart-item-control grid">
+    <div>
+        <p class="product-name">
+            <ins><%=item.product.name %></ins>
+        </p>
+        <p class="calculator">
+            <i>$</i>
+            <i class="cart-item-price"><%=item.product.price%></i>
+            <i> x </i>
+            <i class="cart-item-quantity"><%=item.quantity %></i>
+            <i> = $</i>
+            <i class="cart-item-sum"><%=item.sum %></i>
+        </p>
+    </div>
+    
+    <form class="cart-item-form grid" data-id="<%= item.product._id %>" data-csrf="<%= locals.csrfToken %>">
+        <input type="number" value="<%= item.quantity %>" required>
+        <button class="btn btn-alt outline" >Update</button>
+    </form>
+    
+</article>

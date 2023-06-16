@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<%-include("../../includes/head", {page_title: "Cart"}) %>
+<script src="/scripts/cart-management.js" defer></script>
+<body>
+    <%-include("../../includes/header") %>
+    <main class="container">
+        <h1>Shopping Cart</h1>
+        <% if(!cart.items || cart.items.length == 0){ %>
+            <p>The cart is empty</p>
+        <% } else{%>
+            <% for(item of cart.items){ %>
+                <%-include("./cart-item", {item: item}) %>
+                <br>
+            <% } %>
+        <% } %>
+        <p id="cart-total-price">Total price: $<i><%=cart.sum %></i></p>
+        <% if(locals.isAuth && !(!cart.items || cart.items.length == 0)){ %>
+            <form action="/orders" method="POST">
+                <input type="hidden" value="<%= locals.csrfToken %>" name="_csrf">
+                <button type="submit" id="cart-submit-btn">Submit!</button>
+            </form>
+        <% } else if(locals.isAuth && (!cart.items || cart.items.length == 0)){ %>
+            <input type="text" placeholder="The cart is empty" style="text-align: center;" disabled>
+        <% } else{ %>
+            <input type="text" placeholder="Please login first" style="text-align: center;" disabled>
+        <% } %>
+</main>
+    <%-include("../../includes/footer") %>
+</body>
+</html>

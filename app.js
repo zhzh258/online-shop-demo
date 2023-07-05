@@ -55,7 +55,7 @@ app.use("/admin", routes_admin);
 
 db.connectDB()
     .then(function () {
-        app.listen(config_server.portal);
+        app.listen(config_server.port);
     })
     .catch(function (error) {
         console.log("Failed to connect to the database!");

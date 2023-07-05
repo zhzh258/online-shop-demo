@@ -57,8 +57,8 @@ async function post_orders(req, res, next){
             }
         }),
         mode: 'payment',
-        success_url: `${config_server.url}:${config_server.portal}/success`,
-        cancel_url: `${config_server.url}:${config_server.portal}/cancel`,
+        success_url: `${config_server.url}:${config_server.port}/success`,
+        cancel_url: `${config_server.url}:${config_server.port}/cancel`,
       });
     
     res.redirect(303, session.url);

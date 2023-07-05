@@ -12,7 +12,7 @@ async function deleteProduct(event){
 
     const details_item_ele = document.querySelector(`#item-${id}`)
     // 127.0.0.1
-    const url = `//${config_server.url}:${config_server.portal}/admin/products/${id}` + `?_csrf=${csrfToken}`
+    const url = `//${config_server.url}:${config_server.port}/admin/products/${id}` + `?_csrf=${csrfToken}`
     // console.log("url", url);
     const response = await fetch(url, {
         method: "DELETE",
